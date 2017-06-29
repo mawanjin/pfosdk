@@ -91,7 +91,8 @@ public class PfoSDK {
         this.context = activity;
         PfoUser.getInstance().init();
         PfoPay.getInstance().init();
-        INIT_SDK = true;
+
+
         //add other plugins here to suit your needs.
     }
 
@@ -122,6 +123,13 @@ public class PfoSDK {
             listener.onProxyAttachBaseContext(context);
         }
 
+        if(this.metaData.containsKey("pfosdk_appkey") && this.metaData.containsKey("pfosdk_privatekey")) {
+            INIT_SDK = true;
+        }else{
+            SDKUtils.toast("初始化失败,appkey、privatekey未正确配置");
+            INIT_SDK = false;
+        }
+
     }
 
 
@@ -147,7 +155,10 @@ public class PfoSDK {
 
     //user interface
     public void login(){
-
+        if(!INIT_SDK){
+            SDKUtils.toast("初始化失败,未正确配置");
+            return;
+        }
         if(PfoUser.getInstance().isSupport("login")){
             runOnMainThread(new Runnable() {
                 @Override
@@ -162,6 +173,10 @@ public class PfoSDK {
     }
 
     public void switchLogin(){
+        if(!INIT_SDK){
+            SDKUtils.toast("初始化失败,未正确配置");
+            return;
+        }
         if(PfoUser.getInstance().isSupport("switchLogin"))
             PfoUser.getInstance().switchLogin();
         else
@@ -176,6 +191,10 @@ public class PfoSDK {
 //    }
 
     public void exit(){
+        if(!INIT_SDK){
+            SDKUtils.toast("初始化失败,未正确配置");
+            return;
+        }
         if(PfoUser.getInstance().isSupport("exit"))
             PfoUser.getInstance().exit();
         else
@@ -183,6 +202,10 @@ public class PfoSDK {
     }
 
     public void pay(PayParams payParams,IPayListener listener){
+        if(!INIT_SDK){
+            SDKUtils.toast("初始化失败,未正确配置");
+            return;
+        }
         if(PfoPay.getInstance().isSupport("pay"))
             PfoPay.getInstance().pay(payParams,listener);
         else
