@@ -6,18 +6,18 @@ package com.android.sdk.pfo.pfosdk;
 
 public class InitResult {
     private String extension;
-    private boolean isSDKExit;
+    private boolean isSDKInit;
 
     public InitResult() {}
 
     public InitResult(boolean paramBoolean)
     {
-        this.isSDKExit = paramBoolean;
+        this.isSDKInit = paramBoolean;
     }
 
     public InitResult(boolean paramBoolean, String paramString)
     {
-        this.isSDKExit = paramBoolean;
+        this.isSDKInit = paramBoolean;
         this.extension = paramString;
     }
 
@@ -25,19 +25,16 @@ public class InitResult {
     {
         return this.extension;
     }
-
-    public boolean isSDKExit()
-    {
-        return this.isSDKExit;
-    }
-
     public void setExtension(String paramString)
     {
         this.extension = paramString;
     }
 
-    public void setSDKExit(boolean paramBoolean)
-    {
-        this.isSDKExit = paramBoolean;
+    public boolean isSDKInit() {
+        return isSDKInit;
+    }
+
+    public void setSDKInit(boolean SDKInit) {
+        isSDKInit = SDKInit;
     }
 }

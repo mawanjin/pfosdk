@@ -11,6 +11,7 @@ public abstract class PfoUserAdapter implements IUser{
     public abstract boolean isSupportMethod(String method);
     public void login(){}
     public void loginCustom(String param){}
+    @Deprecated
     public void logout(){}
     public boolean showAccountCenter(){return false;}
     public void submitExtraData(UserExtraData extraData){}

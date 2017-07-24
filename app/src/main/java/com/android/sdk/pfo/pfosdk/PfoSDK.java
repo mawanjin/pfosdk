@@ -394,6 +394,13 @@ public class PfoSDK {
         return this.developInfo.getString("PFO_SDK_VERSION_CODE");
     }
 
+    public String getDevInfoByKey(String key){
+        if ((this.developInfo == null) || (!this.developInfo.contains(key))) {
+            return "";
+        }
+        return this.developInfo.getString(key);
+    }
+
 
     class AuthTask
             extends AsyncTask<PfoToken, Void, PfoToken>

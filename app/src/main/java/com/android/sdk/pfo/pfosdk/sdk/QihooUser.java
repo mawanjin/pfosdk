@@ -27,7 +27,7 @@ public class QihooUser extends PfoUserAdapter implements IActivityCallback {
         //qihoosdk.initSdk(this.context,pfosdk.getinstance().getSdkparams());
         PfoSDK.getInstance().setActivityCallback(this);
         InitResult initResult = new InitResult();
-        initResult.setSDKExit(true);
+        initResult.setSDKInit(true);
         PfoSDK.getInstance().onInitResult(initResult);
         SDKUtils.log(null,"new instance class-QihooUser");
     }
