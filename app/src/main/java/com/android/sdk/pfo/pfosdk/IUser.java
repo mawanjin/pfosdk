@@ -1,5 +1,7 @@
 package com.android.sdk.pfo.pfosdk;
 
+import com.android.sdk.pfo.pfosdk.bo.PfoMetaUserInfo;
+
 /**
  * Created by lala on 2017/6/12.
  */
@@ -15,6 +17,7 @@ public interface IUser extends IPlugin{
     boolean showAccountCenter();
     void submitExtraData(UserExtraData extraData);
     void switchLogin();
+    void uploadUserInfo(PfoMetaUserInfo userInfo,IUploadUserInfoListener listener);
 
 
 }

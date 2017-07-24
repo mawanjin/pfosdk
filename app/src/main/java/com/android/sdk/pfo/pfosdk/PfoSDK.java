@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 
+import com.android.sdk.pfo.pfosdk.bo.PfoMetaUserInfo;
+import com.android.sdk.pfo.pfosdk.bo.PfoUploadUserInfoResult;
 import com.android.sdk.pfo.pfosdk.utils.SDKUtils;
 import com.android.sdk.pfo.pfosdk.verify.PfoVerify;
 
@@ -152,8 +154,25 @@ public class PfoSDK {
         }
     }
 
-
     //user interface
+    public void uploadUserInfo(final PfoMetaUserInfo pfoMetaUserInfo, final IUploadUserInfoListener listener){
+        if(!INIT_SDK){
+            SDKUtils.toast("初始化失败,未正确配置");
+            return;
+        }
+        if(PfoUser.getInstance().isSupport("login")){
+            runOnMainThread(new Runnable() {
+                @Override
+                public void run() {
+                    PfoUser.getInstance().uploadUserInfo(pfoMetaUserInfo,listener);
+                }
+            });
+        }
+        else{
+            SDKUtils.toast("暂不支持该方法");
+        }
+    }
+
     public void login(){
         if(!INIT_SDK){
             SDKUtils.toast("初始化失败,未正确配置");
@@ -402,6 +421,8 @@ public class PfoSDK {
     }
 
 
+
+
     class AuthTask
             extends AsyncTask<PfoToken, Void, PfoToken>
     {
@@ -423,4 +444,7 @@ public class PfoSDK {
     public void setUserListener(IPfoUserListener userListener) {
         this.userListener = userListener;
     }
+
+
+
 }

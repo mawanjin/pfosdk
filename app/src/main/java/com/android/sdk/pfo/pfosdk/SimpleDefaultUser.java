@@ -2,6 +2,9 @@ package com.android.sdk.pfo.pfosdk;
 
 import android.widget.Toast;
 
+import com.android.sdk.pfo.pfosdk.bo.PfoMetaUserInfo;
+import com.android.sdk.pfo.pfosdk.bo.PfoUploadUserInfoResult;
+
 /**
  * Created by lala on 2017/6/12.
  */
@@ -50,6 +53,15 @@ public class SimpleDefaultUser implements IUser {
     public void switchLogin() {
         log("invoke method [switchLogin] success,and it needs to be disposed to generate the final package which integrates with a real channel sdk by Packager_System.");
         PfoSDK.getInstance().onLoginResult(new PfoToken());
+    }
+
+    @Override
+    public void uploadUserInfo(PfoMetaUserInfo userInfo,IUploadUserInfoListener listener) {
+        log("invoke method [uploadUserInfo] success,and it needs to be disposed to generate the final package which integrates with a real channel sdk by Packager_System.");
+        PfoUploadUserInfoResult result = new PfoUploadUserInfoResult();
+        if(listener!=null){
+            listener.onUploadUserInfoResult(result);
+        }
     }
 
     @Override

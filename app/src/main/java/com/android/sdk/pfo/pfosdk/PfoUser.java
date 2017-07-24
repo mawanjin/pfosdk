@@ -1,5 +1,7 @@
 package com.android.sdk.pfo.pfosdk;
 
+import com.android.sdk.pfo.pfosdk.bo.PfoMetaUserInfo;
+
 /**
  * Created by lala on 2017/6/12.
  */
@@ -37,6 +39,11 @@ public class PfoUser {
     public void login(){
         if(this.userPlugin == null)return;
         this.userPlugin.login();
+    }
+
+    public void uploadUserInfo(PfoMetaUserInfo userInfo,IUploadUserInfoListener listener){
+        if(this.userPlugin == null)return;
+        this.userPlugin.uploadUserInfo(userInfo,listener);
     }
 
 //    public void logout(){
