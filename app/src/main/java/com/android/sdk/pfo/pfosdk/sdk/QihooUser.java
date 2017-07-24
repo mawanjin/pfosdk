@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 
 import com.android.sdk.pfo.pfosdk.IActivityCallback;
+import com.android.sdk.pfo.pfosdk.IUploadUserInfoListener;
 import com.android.sdk.pfo.pfosdk.InitResult;
 import com.android.sdk.pfo.pfosdk.PfoSDK;
 import com.android.sdk.pfo.pfosdk.PfoToken;
+import com.android.sdk.pfo.pfosdk.bo.PfoMetaUserInfo;
 import com.android.sdk.pfo.pfosdk.utils.SDKUtils;
 
 import java.util.Arrays;
@@ -72,6 +74,12 @@ public class QihooUser extends PfoUserAdapter implements IActivityCallback {
         token.setToken("sfsafsdafsdafsda");
         token.setMsg("abc...");
         PfoSDK.getInstance().onLoginResult(token);
+    }
+
+    @Override
+    public void uploadUserInfo(PfoMetaUserInfo userInfo, IUploadUserInfoListener listener) {
+        //todo 上传至服务器
+        PfoSDK.getInstance().uploadUserInfo(userInfo,listener);
     }
 
     @Override
